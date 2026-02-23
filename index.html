@@ -4,16 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio - Yura Wiznu Pregifta</title>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VRNGJCWG30"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-VRNGJCWG30');
-    </script>
-
     <style>
         * {
             margin: 0;
@@ -31,6 +21,7 @@
             flex-direction: column;
         }
 
+        /* --- BACKGROUND ANIMATION (GEARS PNG) --- */
         .background-container {
             position: fixed;
             top: 0;
@@ -75,12 +66,13 @@
         @keyframes spin-med { from { transform: translate(-220px, -180px) rotate(0deg); } to { transform: translate(-220px, -180px) rotate(360deg); } }
         @keyframes spin-sm { from { transform: translate(250px, 200px) rotate(0deg); } to { transform: translate(250px, 200px) rotate(360deg); } }
 
+        /* --- NAVBAR (REVISI POSISI MENU) --- */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
             display: flex;
-            justify-content: flex-start;
+            justify-content: flex-start; /* Mulai dari kiri */
             align-items: center;
             padding: 25px 10%;
             z-index: 100;
@@ -95,7 +87,7 @@
             display: flex; 
             gap: 40px; 
             list-style: none; 
-            margin-left: 15%;
+            margin-left: 15%; /* Geser menu ke arah tengah */
         }
 
         .nav-links a { 
@@ -109,6 +101,7 @@
 
         .nav-links a:hover { opacity: 1; color: #4fa3ff; }
 
+        /* --- MAIN CONTENT --- */
         main {
             display: flex;
             align-items: center;
@@ -153,6 +146,7 @@
             animation: imageZoom 10s infinite alternate;
         }
 
+        /* --- KEYFRAMES --- */
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeInSlideLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes fadeInSlideRight { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
