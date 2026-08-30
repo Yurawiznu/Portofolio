@@ -1,0 +1,1282 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sertifikat - Yura Wiznu Pregifta</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VRNGJCWG30"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'G-VRNGJCWG30');
+    </script>
+
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0d1420;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           BACKGROUND
+        ========================== */
+
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            z-index: -1;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .background-container::before {
+            content: "";
+
+            position: absolute;
+
+            width: 700px;
+            height: 700px;
+
+            background: radial-gradient(
+                circle,
+                rgba(79, 163, 255, 0.08),
+                transparent 70%
+            );
+
+            right: -100px;
+            top: 50%;
+
+            transform: translateY(-50%);
+        }
+
+        .background-container::after {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            background: radial-gradient(
+                circle,
+                rgba(79, 163, 255, 0.05),
+                transparent 70%
+            );
+
+            left: -150px;
+            bottom: -100px;
+        }
+
+
+        /* =========================
+           HUD LINE
+        ========================== */
+
+        .hud-line {
+            position: absolute;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #4fa3ff,
+                transparent
+            );
+
+            height: 1px;
+            width: 100%;
+
+            opacity: 0.08;
+        }
+
+
+        /* =========================
+           GEAR
+        ========================== */
+
+        .scene {
+            position: relative;
+
+            width: 1px;
+            height: 1px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            right: -25%;
+        }
+
+        .gear {
+            position: absolute;
+
+            filter: drop-shadow(
+                0 0 10px rgba(79, 163, 255, 0.2)
+            );
+        }
+
+        .big {
+            width: 450px;
+
+            animation:
+                spin
+                20s linear infinite;
+
+            z-index: 2;
+
+            opacity: 0.12;
+        }
+
+        .medium {
+            width: 300px;
+
+            opacity: 0.09;
+
+            animation:
+                spin-med
+                25s linear infinite reverse;
+        }
+
+        .small {
+            width: 180px;
+
+            opacity: 0.07;
+
+            animation:
+                spin-sm
+                20s linear infinite;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        nav {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            display: flex;
+
+            justify-content: flex-start;
+            align-items: center;
+
+            padding: 25px 10%;
+
+            z-index: 100;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(13, 20, 32, 0.95),
+                    transparent
+                );
+
+            animation:
+                fadeInDown
+                1s ease-out;
+        }
+
+
+        /* =========================
+           LOGO
+        ========================== */
+
+        .logo-container {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: auto;
+        }
+
+        .logo-text {
+            font-weight: 700;
+
+            font-size: 1.4rem;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================
+           NAV LINKS
+        ========================== */
+
+        .nav-links {
+            display: flex;
+
+            gap: 40px;
+
+            list-style: none;
+
+            margin-left: 15%;
+        }
+
+        .nav-links a {
+            position: relative;
+
+            text-decoration: none;
+
+            color: white;
+
+            opacity: 0.7;
+
+            transition: 0.3s;
+
+            font-size: 0.95rem;
+
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -8px;
+
+            width: 0;
+            height: 2px;
+
+            background: #4fa3ff;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+
+            color: #4fa3ff;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: #4fa3ff;
+
+            opacity: 1;
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+
+        /* =========================
+           SERTIFIKAT SECTION
+        ========================== */
+
+        .certificate-section {
+            min-height: 100vh;
+
+            padding:
+                150px 10%
+                80px;
+
+            position: relative;
+
+            z-index: 10;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        .section-header {
+            text-align: center;
+
+            max-width: 700px;
+
+            margin:
+                0 auto
+                60px;
+
+            animation:
+                fadeInUp
+                1s ease-out;
+        }
+
+        .section-label {
+            display: inline-block;
+
+            padding:
+                7px 15px;
+
+            border:
+                1px solid
+                rgba(79, 163, 255, 0.3);
+
+            background:
+                rgba(79, 163, 255, 0.08);
+
+            border-radius: 30px;
+
+            color: #4fa3ff;
+
+            font-size: 0.8rem;
+
+            margin-bottom: 15px;
+        }
+
+        .section-header h1 {
+            font-size: 3.2rem;
+
+            margin-bottom: 15px;
+        }
+
+        .section-header h1 span {
+            color: #4fa3ff;
+
+            text-shadow:
+                0 0 25px
+                rgba(79, 163, 255, 0.2);
+        }
+
+        .section-header p {
+            color:
+                rgba(255, 255, 255, 0.6);
+
+            line-height: 1.7;
+
+            font-size: 1rem;
+        }
+
+
+        /* =========================
+           CERTIFICATE GRID
+        ========================== */
+
+        .certificate-grid {
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+
+        /* =========================
+           CERTIFICATE CARD
+        ========================== */
+
+        .certificate-card {
+            position: relative;
+
+            background:
+                rgba(255, 255, 255, 0.035);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.1);
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            backdrop-filter: blur(10px);
+
+            transition:
+                transform 0.4s ease,
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
+
+            animation:
+                fadeInUp
+                1s ease-out;
+        }
+
+        .certificate-card:hover {
+            transform:
+                translateY(-10px);
+
+            border-color:
+                rgba(79, 163, 255, 0.5);
+
+            box-shadow:
+                0 20px 50px
+                rgba(0, 0, 0, 0.35),
+
+                0 0 30px
+                rgba(79, 163, 255, 0.08);
+        }
+
+
+        /* =========================
+           CERTIFICATE IMAGE
+        ========================== */
+
+        .certificate-image {
+            width: 100%;
+
+            height: 210px;
+
+            overflow: hidden;
+
+            background:
+                rgba(0, 0, 0, 0.2);
+
+            position: relative;
+        }
+
+        .certificate-image::after {
+            content: "SERTIFIKAT";
+
+            position: absolute;
+
+            left: 15px;
+            top: 15px;
+
+            padding:
+                5px 10px;
+
+            border-radius: 20px;
+
+            font-size: 0.65rem;
+
+            color: white;
+
+            background:
+                rgba(13, 20, 32, 0.75);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.1);
+
+            backdrop-filter: blur(5px);
+        }
+
+        .certificate-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                transform 0.5s ease;
+        }
+
+        .certificate-card:hover
+        .certificate-image img {
+            transform:
+                scale(1.07);
+        }
+
+
+        /* =========================
+           CERTIFICATE CONTENT
+        ========================== */
+
+        .certificate-content {
+            padding: 22px;
+        }
+
+        .certificate-content h2 {
+            font-size: 1.15rem;
+
+            margin-bottom: 8px;
+
+            line-height: 1.4;
+        }
+
+        .certificate-content p {
+            font-size: 0.85rem;
+
+            color:
+                rgba(255, 255, 255, 0.55);
+
+            line-height: 1.6;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* =========================
+           CERTIFICATE INFO
+        ========================== */
+
+        .certificate-info {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding-top: 15px;
+
+            border-top:
+                1px solid
+                rgba(255, 255, 255, 0.08);
+        }
+
+        .certificate-org {
+            color: #4fa3ff;
+
+            font-size: 0.78rem;
+
+            font-weight: 600;
+        }
+
+        .certificate-year {
+            color:
+                rgba(255, 255, 255, 0.4);
+
+            font-size: 0.75rem;
+        }
+
+
+        /* =========================
+           VIEW BUTTON
+        ========================== */
+
+        .certificate-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            margin-top: 15px;
+
+            padding:
+                9px 15px;
+
+            border:
+                1px solid
+                rgba(79, 163, 255, 0.2);
+
+            border-radius: 7px;
+
+            color: #4fa3ff;
+
+            background:
+                rgba(79, 163, 255, 0.05);
+
+            text-decoration: none;
+
+            font-size: 0.78rem;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .certificate-button:hover {
+            background:
+                rgba(79, 163, 255, 0.12);
+
+            border-color:
+                #4fa3ff;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =========================
+           ANIMATION
+        ========================== */
+
+        @keyframes spin {
+
+            from {
+                transform:
+                    rotate(0deg);
+            }
+
+            to {
+                transform:
+                    rotate(360deg);
+            }
+
+        }
+
+        @keyframes spin-med {
+
+            from {
+                transform:
+                    translate(-220px, -180px)
+                    rotate(0deg);
+            }
+
+            to {
+                transform:
+                    translate(-220px, -180px)
+                    rotate(360deg);
+            }
+
+        }
+
+        @keyframes spin-sm {
+
+            from {
+                transform:
+                    translate(250px, 200px)
+                    rotate(0deg);
+            }
+
+            to {
+                transform:
+                    translate(250px, 200px)
+                    rotate(360deg);
+            }
+
+        }
+
+        @keyframes fadeInDown {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+
+        }
+
+        @keyframes fadeInUp {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 1000px) {
+
+            nav {
+                padding:
+                    20px 7%;
+            }
+
+            .nav-links {
+                margin-left: auto;
+
+                gap: 25px;
+            }
+
+            .certificate-section {
+                padding:
+                    140px 7%
+                    70px;
+            }
+
+            .certificate-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            nav {
+                position: absolute;
+
+                justify-content: center;
+
+                flex-direction: column;
+
+                gap: 15px;
+
+                padding:
+                    20px 5%;
+            }
+
+            .nav-links {
+                margin-left: 0;
+
+                gap: 18px;
+            }
+
+            .nav-links a {
+                font-size: 0.82rem;
+            }
+
+            .certificate-section {
+                padding:
+                    170px 6%
+                    60px;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .section-header h1 {
+                font-size: 2.4rem;
+            }
+
+            .section-header p {
+                font-size: 0.9rem;
+            }
+
+            .certificate-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .certificate-image {
+                height: 200px;
+            }
+
+            .scene {
+                right: 0;
+            }
+
+            .big {
+                width: 300px;
+            }
+
+            .medium {
+                width: 200px;
+            }
+
+            .small {
+                width: 120px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         BACKGROUND
+    ========================== -->
+
+    <div class="background-container">
+
+        <div
+            class="hud-line"
+            style="top: 35%;">
+        </div>
+
+        <div
+            class="hud-line"
+            style="top: 65%;">
+        </div>
+
+
+        <div class="scene">
+
+            <img
+                src="Gear.png"
+                class="gear big"
+                alt="Gear">
+
+            <img
+                src="Gear.png"
+                class="gear medium"
+                alt="Gear">
+
+            <img
+                src="Gear.png"
+                class="gear small"
+                alt="Gear">
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav>
+
+        <div class="logo-container">
+
+            <img
+                src="icons8-logo-50.png"
+                alt="Logo YW"
+                class="logo-icon">
+
+            <span class="logo-text">
+                YW
+            </span>
+
+        </div>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="tentang.html">
+                    Tentang
+                </a>
+            </li>
+
+            <li>
+                <a href="project.html">
+                    Project
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="sertifikat.html"
+                    class="active">
+                    Sertifikat
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         SERTIFIKAT
+    ========================== -->
+
+    <section class="certificate-section">
+
+
+        <!-- HEADER -->
+
+        <div class="section-header">
+
+            <div class="section-label">
+                CERTIFICATES
+            </div>
+
+            <h1>
+                Sertifikat & <span>Pencapaian</span>
+            </h1>
+
+            <p>
+                Koleksi sertifikat dan pencapaian yang saya peroleh
+                selama mengikuti berbagai kegiatan, pelatihan,
+                dan pengembangan kompetensi di bidang teknologi.
+            </p>
+
+        </div>
+
+
+        <!-- CERTIFICATE GRID -->
+
+        <div class="certificate-grid">
+
+
+            <!-- SERTIFIKAT 01 -->
+
+            <div class="certificate-card">
+
+                <div class="certificate-image">
+
+                    <img
+                        src="sertifikat1.jpg"
+                        alt="Sertifikat 1">
+
+                </div>
+
+
+                <div class="certificate-content">
+
+                    <h2>
+                        Sertifikat Pelatihan Teknologi
+                    </h2>
+
+                    <p>
+                        Sertifikat sebagai bukti telah mengikuti
+                        pelatihan atau kegiatan pengembangan
+                        kompetensi di bidang teknologi.
+                    </p>
+
+
+                    <div class="certificate-info">
+
+                        <span class="certificate-org">
+                            Institusi / Platform
+                        </span>
+
+                        <span class="certificate-year">
+                            2026
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="sertifikat1.jpg"
+                        target="_blank"
+                        class="certificate-button">
+
+                        Lihat Sertifikat →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SERTIFIKAT 02 -->
+
+            <div class="certificate-card">
+
+                <div class="certificate-image">
+
+                    <img
+                        src="sertifikat2.jpg"
+                        alt="Sertifikat 2">
+
+                </div>
+
+
+                <div class="certificate-content">
+
+                    <h2>
+                        Sertifikat Pengembangan Web
+                    </h2>
+
+                    <p>
+                        Sertifikat yang berkaitan dengan
+                        pengembangan website dan teknologi
+                        pemrograman.
+                    </p>
+
+
+                    <div class="certificate-info">
+
+                        <span class="certificate-org">
+                            Institusi / Platform
+                        </span>
+
+                        <span class="certificate-year">
+                            2026
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="sertifikat2.jpg"
+                        target="_blank"
+                        class="certificate-button">
+
+                        Lihat Sertifikat →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SERTIFIKAT 03 -->
+
+            <div class="certificate-card">
+
+                <div class="certificate-image">
+
+                    <img
+                        src="sertifikat3.jpg"
+                        alt="Sertifikat 3">
+
+                </div>
+
+
+                <div class="certificate-content">
+
+                    <h2>
+                        Sertifikat Artificial Intelligence
+                    </h2>
+
+                    <p>
+                        Sertifikat yang berkaitan dengan
+                        Machine Learning, Artificial Intelligence,
+                        atau Computer Vision.
+                    </p>
+
+
+                    <div class="certificate-info">
+
+                        <span class="certificate-org">
+                            Institusi / Platform
+                        </span>
+
+                        <span class="certificate-year">
+                            2026
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="sertifikat3.jpg"
+                        target="_blank"
+                        class="certificate-button">
+
+                        Lihat Sertifikat →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SERTIFIKAT 04 -->
+
+            <div class="certificate-card">
+
+                <div class="certificate-image">
+
+                    <img
+                        src="sertifikat4.jpg"
+                        alt="Sertifikat 4">
+
+                </div>
+
+
+                <div class="certificate-content">
+
+                    <h2>
+                        Sertifikat Networking
+                    </h2>
+
+                    <p>
+                        Sertifikat yang berhubungan dengan
+                        jaringan komputer, sistem, dan
+                        teknologi informasi.
+                    </p>
+
+
+                    <div class="certificate-info">
+
+                        <span class="certificate-org">
+                            Institusi / Platform
+                        </span>
+
+                        <span class="certificate-year">
+                            2026
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="sertifikat4.jpg"
+                        target="_blank"
+                        class="certificate-button">
+
+                        Lihat Sertifikat →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SERTIFIKAT 05 -->
+
+            <div class="certificate-card">
+
+                <div class="certificate-image">
+
+                    <img
+                        src="sertifikat5.jpg"
+                        alt="Sertifikat 5">
+
+                </div>
+
+
+                <div class="certificate-content">
+
+                    <h2>
+                        Sertifikat Internet of Things
+                    </h2>
+
+                    <p>
+                        Sertifikat yang berkaitan dengan
+                        Internet of Things, mikrokontroler,
+                        dan pengembangan perangkat pintar.
+                    </p>
+
+
+                    <div class="certificate-info">
+
+                        <span class="certificate-org">
+                            Institusi / Platform
+                        </span>
+
+                        <span class="certificate-year">
+                            2026
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="sertifikat5.jpg"
+                        target="_blank"
+                        class="certificate-button">
+
+                        Lihat Sertifikat →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SERTIFIKAT 06 -->
+
+            <div class="certificate-card">
+
+                <div class="certificate-image">
+
+                    <img
+                        src="sertifikat6.jpg"
+                        alt="Sertifikat 6">
+
+                </div>
+
+
+                <div class="certificate-content">
+
+                    <h2>
+                        Sertifikat Lainnya
+                    </h2>
+
+                    <p>
+                        Tambahkan sertifikat lain yang ingin
+                        ditampilkan pada halaman portfolio
+                        pribadi Anda.
+                    </p>
+
+
+                    <div class="certificate-info">
+
+                        <span class="certificate-org">
+                            Institusi / Platform
+                        </span>
+
+                        <span class="certificate-year">
+                            2026
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="sertifikat6.jpg"
+                        target="_blank"
+                        class="certificate-button">
+
+                        Lihat Sertifikat →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>
+```

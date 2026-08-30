@@ -1,0 +1,781 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tentang Saya - Yura Wiznu Pregifta</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VRNGJCWG30"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'G-VRNGJCWG30');
+    </script>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0d1420;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           BACKGROUND
+        ========================== */
+
+        .background-container {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .background-container::before {
+            content: "";
+            position: absolute;
+            width: 700px;
+            height: 700px;
+
+            background: radial-gradient(
+                circle,
+                rgba(79, 163, 255, 0.08),
+                transparent 70%
+            );
+
+            right: -100px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hud-line {
+            position: absolute;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #4fa3ff,
+                transparent
+            );
+
+            height: 1px;
+            width: 100%;
+            opacity: 0.1;
+        }
+
+
+        /* =========================
+           GEAR
+        ========================== */
+
+        .scene {
+            position: relative;
+            width: 1px;
+            height: 1px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            right: -25%;
+        }
+
+        .gear {
+            position: absolute;
+
+            filter: drop-shadow(
+                0 0 10px rgba(79, 163, 255, 0.2)
+            );
+        }
+
+        .big {
+            width: 450px;
+            animation: spin 20s linear infinite;
+            z-index: 2;
+            opacity: 0.2;
+        }
+
+        .medium {
+            width: 300px;
+            opacity: 0.15;
+            animation: spin-med 25s linear infinite reverse;
+        }
+
+        .small {
+            width: 180px;
+            opacity: 0.1;
+            animation: spin-sm 20s linear infinite;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        nav {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            padding: 25px 10%;
+
+            z-index: 100;
+
+            background: linear-gradient(
+                to bottom,
+                rgba(13, 20, 32, 0.9),
+                transparent
+            );
+
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: auto;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+
+            list-style: none;
+
+            margin-left: 15%;
+        }
+
+        .nav-links a {
+            position: relative;
+
+            text-decoration: none;
+            color: white;
+
+            opacity: 0.7;
+
+            transition: 0.3s;
+
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -8px;
+
+            width: 0;
+            height: 2px;
+
+            background: #4fa3ff;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: #4fa3ff;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about {
+            min-height: 100vh;
+
+            padding: 150px 10% 80px;
+
+            position: relative;
+            z-index: 10;
+        }
+
+        .about-header {
+            text-align: center;
+
+            margin-bottom: 50px;
+
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .about-header .small-title {
+            color: #4fa3ff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .about-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .about-header h1 span {
+            color: #4fa3ff;
+        }
+
+        .about-header p {
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           ABOUT GRID
+        ========================== */
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 25px;
+
+            max-width: 1100px;
+
+            margin: auto;
+        }
+
+        .about-card {
+            padding: 30px;
+
+            background: rgba(255, 255, 255, 0.035);
+
+            border: 1px solid rgba(79, 163, 255, 0.15);
+
+            border-radius: 15px;
+
+            backdrop-filter: blur(8px);
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.2);
+
+            transition: 0.3s;
+
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+
+            border-color: rgba(79, 163, 255, 0.5);
+
+            box-shadow:
+                0 20px 45px rgba(79, 163, 255, 0.08);
+        }
+
+        .about-card h2 {
+            font-size: 1.3rem;
+
+            margin-bottom: 18px;
+
+            color: #4fa3ff;
+        }
+
+        .about-card p {
+            color: rgba(255, 255, 255, 0.65);
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           EDUCATION
+        ========================== */
+
+        .education {
+            border-left: 3px solid #4fa3ff;
+        }
+
+        .education h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .education .year {
+            color: #4fa3ff;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           SKILLS
+        ========================== */
+
+        .skills {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 15px;
+        }
+
+        .skill {
+            padding: 8px 13px;
+
+            border-radius: 20px;
+
+            background: rgba(79, 163, 255, 0.08);
+
+            border: 1px solid rgba(79, 163, 255, 0.2);
+
+            color: #dbeafe;
+
+            font-size: 0.85rem;
+
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            color: #4fa3ff;
+
+            border-color: #4fa3ff;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           ANIMATION
+        ========================== */
+
+        @keyframes spin {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+        @keyframes spin-med {
+
+            from {
+                transform:
+                    translate(-220px, -180px)
+                    rotate(0deg);
+            }
+
+            to {
+                transform:
+                    translate(-220px, -180px)
+                    rotate(360deg);
+            }
+
+        }
+
+        @keyframes spin-sm {
+
+            from {
+                transform:
+                    translate(250px, 200px)
+                    rotate(0deg);
+            }
+
+            to {
+                transform:
+                    translate(250px, 200px)
+                    rotate(360deg);
+            }
+
+        }
+
+        @keyframes fadeInDown {
+
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        @keyframes fadeInUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            nav {
+                padding: 20px 7%;
+            }
+
+            .nav-links {
+                gap: 20px;
+                margin-left: auto;
+            }
+
+            .about {
+                padding: 130px 7% 60px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            nav {
+                position: absolute;
+
+                justify-content: center;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .nav-links {
+                margin-left: 0;
+                gap: 20px;
+            }
+
+            .about {
+                padding-top: 180px;
+            }
+
+            .about-header h1 {
+                font-size: 2.3rem;
+            }
+
+            .about-card {
+                padding: 25px;
+            }
+
+            .scene {
+                right: 0;
+            }
+
+            .big {
+                width: 300px;
+            }
+
+            .medium {
+                width: 200px;
+            }
+
+            .small {
+                width: 120px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         BACKGROUND
+    ========================== -->
+
+    <div class="background-container">
+
+        <div
+            class="hud-line"
+            style="top: 35%;">
+        </div>
+
+        <div
+            class="hud-line"
+            style="top: 65%;">
+        </div>
+
+
+        <div class="scene">
+
+            <img
+                src="Gear.png"
+                class="gear big"
+                alt="Gear">
+
+            <img
+                src="Gear.png"
+                class="gear medium"
+                alt="Gear">
+
+            <img
+                src="Gear.png"
+                class="gear small"
+                alt="Gear">
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav>
+
+        <div class="logo-container">
+
+            <img
+                src="icons8-logo-50.png"
+                alt="Logo YW"
+                class="logo-icon">
+
+            <span class="logo-text">
+                YW
+            </span>
+
+        </div>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="tentang.html">
+                    Tentang
+                </a>
+            </li>
+
+            <li>
+                <a href="project.html">
+                    Project
+                </a>
+            </li>
+
+            <li>
+                <a href="sertifikat.html">
+                    Sertifikat
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         TENTANG SAYA
+    ========================== -->
+
+    <section class="about">
+
+        <div class="about-header">
+
+            <div class="small-title">
+                About Me
+            </div>
+
+            <h1>
+                Tentang <span>Saya</span>
+            </h1>
+
+            <p>
+                Mengenal lebih dekat tentang saya, latar belakang pendidikan,
+                serta bidang teknologi yang sedang saya pelajari dan kembangkan.
+            </p>
+
+        </div>
+
+
+        <div class="about-grid">
+
+
+            <!-- PROFIL -->
+
+            <div class="about-card">
+
+                <h2>👨‍💻 Profil Saya</h2>
+
+                <p>
+                    Saya adalah mahasiswa Teknik Informatika yang memiliki
+                    ketertarikan besar terhadap dunia teknologi dan
+                    pengembangan perangkat lunak.
+                </p>
+
+                <br>
+
+                <p>
+                    Saya tertarik mempelajari bagaimana teknologi dapat
+                    digunakan untuk membuat solusi yang bermanfaat,
+                    khususnya melalui website, kecerdasan buatan,
+                    computer vision, dan berbagai teknologi digital lainnya.
+                </p>
+
+            </div>
+
+
+            <!-- PENDIDIKAN -->
+
+            <div class="about-card education">
+
+                <h2>🎓 Pendidikan</h2>
+
+                <h3>
+                    Universitas Muhammadiyah Ponorogo
+                </h3>
+
+                <div class="year">
+                    Teknik Informatika
+                </div>
+
+                <p>
+                    Mempelajari berbagai bidang dalam teknologi informasi,
+                    mulai dari pemrograman, basis data, jaringan komputer,
+                    pengembangan website, hingga kecerdasan buatan.
+                </p>
+
+            </div>
+
+
+            <!-- SKILL -->
+
+            <div class="about-card">
+
+                <h2>⚡ Teknologi & Skill</h2>
+
+                <p>
+                    Beberapa teknologi dan bidang yang saya pelajari:
+                </p>
+
+                <div class="skills">
+
+                    <span class="skill">HTML</span>
+                    <span class="skill">CSS</span>
+                    <span class="skill">JavaScript</span>
+                    <span class="skill">Python</span>
+                    <span class="skill">Flask</span>
+                    <span class="skill">TensorFlow</span>
+                    <span class="skill">Computer Vision</span>
+                    <span class="skill">Machine Learning</span>
+                    <span class="skill">MySQL</span>
+                    <span class="skill">Git & GitHub</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOKUS -->
+
+            <div class="about-card">
+
+                <h2>🚀 Fokus Saya</h2>
+
+                <p>
+                    Saat ini saya berfokus untuk terus mengembangkan
+                    kemampuan di bidang Web Development dan Artificial
+                    Intelligence.
+                </p>
+
+                <br>
+
+                <p>
+                    Saya juga senang mengembangkan project yang menggabungkan
+                    software, AI, dan teknologi lainnya menjadi sebuah
+                    solusi yang dapat digunakan dalam kehidupan nyata.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>
